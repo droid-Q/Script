@@ -1704,7 +1704,7 @@ function GetCookie() {
   if (req.method != 'OPTIONS' && req.headers) {
     const CV = (req.headers['Cookie'] || req.headers['cookie'] || '');
     const ckItems = CV.match(/(pt_key|pt_pin)=.+?;/g);
-    if (/^https:\/\/(me-|)api(\.m|)\.jd\.com\/(client\.|user_new)/.test(req.url)) {
+    if (/^https:\/\/(me-|)api(\.m|)\.jd\.com\/(client\.action|user_new)/.test(req.url)) {
       if (ckItems && ckItems.length == 2) {
         const value = CookieUpdate(null, ckItems.join(''))
         if (value.type !== -1) {
@@ -1716,7 +1716,7 @@ function GetCookie() {
       } else {
         throw new Error("写入Cookie失败, 关键值缺失\n可能原因: 非网页获取 ‼️");
       }
-    } else if (/^https:\/\/ms\.jr\.jd\.com\/gw\/generic\/hy\/h5\/m\/appSign\?/.test(req.url) && req.body) {
+    } else if (/^https:\/\/ms\.jr\.jd\.com\/gw\/generic\/hy\/h5\/m\/jrSign\?/.test(req.url) && req.body) {
       const value = CookieUpdate(CV, req.body, 'jrBody');
       if (value.type) {
         const write = $nobyda.write(JSON.stringify(value.total, null, 2), "CookiesJD")
