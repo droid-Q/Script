@@ -1715,7 +1715,7 @@ function GetCookie() {
         }
       } else {
         console.log(`\nckItems: ${ckItems}\n`)
-        throw new Error("写入Cookie失败, 关键值缺失\n可能原因: 非网页获取 ‼️");
+        console.log(`\n"写入Cookie失败, 关键值缺失\n可能原因: 非网页获取 ‼️"`)
       }
     } else if (/^https:\/\/ms\.jr\.jd\.com\/gw\/generic\/hy\/h5\/m\/jrSign\?/.test(req.url) && req.body) {
       const value = CookieUpdate(CV, req.body, 'jrBody');
