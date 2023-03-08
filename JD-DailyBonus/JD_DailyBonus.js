@@ -1714,6 +1714,7 @@ function GetCookie() {
           console.log(`\n用户名: ${value.name}\n与历史京东 [账号${value.item}] Cookie相同, 跳过写入 ⚠️`)
         }
       } else {
+        console.log(`\nckItems: ${ckItems}\n`)
         throw new Error("写入Cookie失败, 关键值缺失\n可能原因: 非网页获取 ‼️");
       }
     } else if (/^https:\/\/ms\.jr\.jd\.com\/gw\/generic\/hy\/h5\/m\/jrSign\?/.test(req.url) && req.body) {
